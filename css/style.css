@@ -92,3 +92,53 @@ body {
 .card button:hover {
     opacity: 0.7;
 }
+
+.modal-container {
+    width: 80%;
+    margin: 0 10%;
+    max-height: 88vh;
+    color: #fff;
+    background-color: #121212;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    position:   fixed;
+    overflow: auto;
+    z-index: 9;
+    top: 12vh;
+    scrollbar-color: none;
+}
+
+.modal-container::-webkit-scrollbar {
+    display:none;
+    
+}
+.modal-header{
+    display: flex;
+    justify-content: space-around;
+    background-color: #0a0909;
+    color: white;
+    width: 100%;
+}
+.modal-header-button {
+    cursor: pointer;
+}
+
+.modal-container >div >img {
+    
+    height: 250px;
+    width: 250px;
+}
+.total-content {
+    
+    font-size: 25;
+    padding: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+.carrtito-container {
+    display: flex;
+    flex-direction: space-around;
+    width: 1000px !important;
+}

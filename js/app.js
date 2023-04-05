@@ -1,10 +1,10 @@
 const shopContent = document.getElementById("shopContent");
 const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modalContainer");
-
 const productos = [
     {
-        id: "brownie",
+        id: 1,
+        nombre: "brownie",
         precio: 30,
         img:"https://eurogrow.es/img/cms/0000/brownie-vegano-cannabico/brownie-vegano-cannabico.jpg",
     },
@@ -27,8 +27,7 @@ const productos = [
         img:"https://greensiderec.com/wp-content/uploads/2020/05/cannabis-lemonade-facebook.jpg",
     }
 ];
-
-let carrito = [];
+let carrito = []
 productos.forEach((product) => {
     let content = document.createElement("div");
     content.className = "card"
@@ -51,34 +50,42 @@ productos.forEach((product) => {
             img : product.img,
             nombre : product.nombre,
             precio : product.precio,
-        })
-        console.log(carrito);
-
-    verCarrito.addEventListener("click",() => {
-        const modalHeader = document.createElement("div");
-        modalHeader.className = "modal-header";
-        modalHeader.innerHTML = `
-            <h1 class="modal-header-title">carrito.</h1>
-        `;
-        modalContainer.append(modalHeader);
-    
-        const modalbutton = document.createElement("h1");
-        modalbutton.innerText = "x";
-        modalbutton.className = "modal-header-button";
-    
-        modalHeader.append(modalbutton);
-    
-        let carritoContainer = document.createElement("div");
-        carrito.className = "carrito-container";
-        carrito.innerText = `
-            <img src="${product.img}">
-            <h3>${product.nombre}</h3>
-            <p>${product.precio}</p>
-        `;
-        modalContainer.append(ca)
-    
+        });
         
-
     });
 });
+verCarrito.addEventListener("click",() => {
+    const modalHeader = document.createElement("div");
+    modalHeader.className = "modal-header";
+    modalHeader.innerHTML = `
+        <h1 class="modal-header-title">carrito.</h1>
+    `;
+    modalContainer.append(modalHeader);
+
+    const modalbutton = document.createElement("h1");
+    modalbutton.innerText = "x";
+    modalbutton.className = "modal-header-button";
+
+    modalHeader.append(modalbutton);
+    
+    carrito.forEach((product) => {
+        let carritoContainer = document.createElement("div");
+        carritoContainer.className = "carrito-container";
+        carritoContainer.innerHTML = `
+        <img class ="img-producto" src="${product.img}"/>
+        <h3>${product.nombre}</h3>
+        <p> Valor: ${product.precio}</p>
+    `;
+    modalContainer.append(carritoContainer);
+
+
+    });
+    const total = carrito.reduce((acc,el) => acc +el.precio,0);
+
+    const totalBuying = document.createElement("div");
+    totalBuying.className = "total-content";
+    totalBuying.innerHTML = `total a pagar: ${total}$`;
+    modalContainer.append(totalBuying);
+});
+
 
